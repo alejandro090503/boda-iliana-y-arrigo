@@ -1829,6 +1829,110 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
   mix-blend-mode:multiply;background-image:var(--grain)}
 .seam.seam-auto{position:relative;z-index:1;height:130px!important;margin:-65px 0!important;
   pointer-events:none;background:var(--seam-grad)!important}
+
+/* ===== <!-- PAQUETE rsvp --> ===== */
+/* ============ RSVP (paquete ia-rsvp, diseño boda-jennifer) ============
+   Depende de las variables de la destino: --bg --paper --accent --accent-soft
+   --wine --gold --gold-soft --gold-deep --ink --ink-soft --display --serif
+   --script --sans. El fondo floral espera ./ia-rsvp-flores.jpeg en la raíz. */
+
+.ia-rsvp{position:relative;overflow:hidden;background:var(--bg);padding:min(18vh,170px) 0;contain:layout paint;}
+/* Fondo floral con doble máscara (bordes difuminados), igual que el origen */
+.ia-rsvp::before{content:"";position:absolute;inset:-2px;background:url('./ia-rsvp-flores.jpeg') center/cover no-repeat;opacity:.42;filter:saturate(.55) sepia(.18);pointer-events:none;z-index:0;mask-image:linear-gradient(to right,transparent 0%,black 18%,black 82%,transparent 100%),linear-gradient(to bottom,transparent 0%,black 16%,black 84%,transparent 100%);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 18%,black 82%,transparent 100%),linear-gradient(to bottom,transparent 0%,black 16%,black 84%,transparent 100%);-webkit-mask-composite:destination-in;}
+/* Esquineros de hilo dorado de la sección (el ::after de .section-bg del origen) */
+.ia-rsvp::after{
+  content:'';position:absolute;inset:28px;
+  background:
+    linear-gradient(to right, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) top left / 52px 1px no-repeat,
+    linear-gradient(to bottom, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) top left / 1px 52px no-repeat,
+    linear-gradient(to left, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) top right / 52px 1px no-repeat,
+    linear-gradient(to bottom, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) top right / 1px 52px no-repeat,
+    linear-gradient(to right, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) bottom left / 52px 1px no-repeat,
+    linear-gradient(to top, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) bottom left / 1px 52px no-repeat,
+    linear-gradient(to left, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) bottom right / 52px 1px no-repeat,
+    linear-gradient(to top, color-mix(in srgb,var(--gold) 25%,transparent) 60%, transparent) bottom right / 1px 52px no-repeat;
+  filter:blur(0.9px);pointer-events:none;z-index:0;
+}
+.ia-rsvp *,.ia-rsvp *::before,.ia-rsvp *::after{box-sizing:border-box;}
+.ia-rsvp-container{max-width:1240px;margin:0 auto;padding:0 clamp(24px,4vw,56px);position:relative;z-index:1;}
+
+.ia-rsvp-card{max-width:580px;margin:0 auto;background:rgba(255,255,255,.84);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid color-mix(in srgb,var(--gold) 38%,transparent);padding:clamp(44px,6vw,76px) clamp(28px,5vw,68px);position:relative;box-shadow:0 24px 64px color-mix(in srgb,var(--wine) 10%,transparent),0 4px 20px color-mix(in srgb,var(--gold) 14%,transparent);}
+.ia-rsvp-card::before{content:"";position:absolute;inset:10px;border:1px solid color-mix(in srgb,var(--gold) 20%,transparent);pointer-events:none;}
+.ia-rsvp-corner{position:absolute;width:52px;height:52px;pointer-events:none;scale:var(--ia-rsvp-cs,1);}
+.ia-rsvp-corner--tl{top:0;left:0;}
+.ia-rsvp-corner--tr{top:0;right:0;transform:scaleX(-1);}
+.ia-rsvp-corner--bl{bottom:0;left:0;transform:scaleY(-1);}
+.ia-rsvp-corner--br{bottom:0;right:0;transform:scale(-1,-1);}
+.ia-rsvp-inner{text-align:center;position:relative;}
+.ia-rsvp-ornament{display:block;margin:0 auto 28px;width:min(280px,75vw);height:auto;}
+
+.ia-rsvp-eyebrow{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold-deep);padding-left:.55em;margin:0 0 32px;display:inline-block;}
+.ia-rsvp-eyebrow::before,.ia-rsvp-eyebrow::after{content:"";display:inline-block;width:32px;height:1px;background:var(--gold);vertical-align:middle;margin:0 14px 4px 0;}
+.ia-rsvp-eyebrow::after{margin:0 0 4px 14px;}
+
+.ia-rsvp-title{font-family:var(--display);font-weight:600;font-style:italic;letter-spacing:-.015em;font-size:clamp(32px,4.2vw,52px);color:var(--ink);margin:0 0 18px;line-height:1.15;}
+.ia-rsvp-title em{color:var(--gold-deep);font-style:italic;font-weight:600;}
+.ia-rsvp-text{font-family:var(--serif);font-size:clamp(16px,1.5vw,17px);color:var(--ink-soft);line-height:1.85;margin:0 auto 36px;font-weight:500;max-width:420px;}
+.ia-rsvp-text strong{color:var(--ink);font-weight:700;}
+.ia-rsvp-name{font-family:var(--script);font-size:clamp(30px,7vw,44px);color:var(--gold-deep);line-height:1.2;margin:-14px auto 22px;}
+
+.ia-rsvp-divider{display:flex;align-items:center;gap:14px;margin:0 auto 32px;max-width:320px;}
+.ia-rsvp-divider::before,.ia-rsvp-divider::after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,color-mix(in srgb,var(--gold) 45%,transparent),transparent);}
+.ia-rsvp-divider-heart{color:var(--gold);flex-shrink:0;opacity:.8;}
+
+.ia-rsvp-pases-display{max-width:420px;margin:0 auto 28px;padding:20px 32px;background:color-mix(in srgb,var(--accent-soft) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.ia-rsvp-pases-label{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--ink-soft);text-align:left;}
+.ia-rsvp-pases-num{font-family:var(--display);font-style:italic;font-size:clamp(36px,5vw,52px);color:var(--gold-deep);line-height:1;}
+
+.ia-rsvp-toggle{display:flex;gap:10px;max-width:420px;margin:0 auto 20px;}
+.ia-rsvp-toggle-btn{flex:1;padding:14px 8px;border:1.5px solid color-mix(in srgb,var(--gold) 28%,transparent);background:rgba(255,255,255,.6);cursor:pointer;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);border-radius:8px;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.ia-rsvp-toggle-btn:disabled{opacity:.45;cursor:not-allowed;}
+.ia-rsvp-toggle-btn:focus-visible,.ia-rsvp-btn:focus-visible,.ia-rsvp-contador-btn:focus-visible,.ia-rsvp-editar-btn:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;}
+.ia-rsvp-toggle-btn.ia-rsvp-sel-yes{background:color-mix(in srgb,var(--accent) 14%,transparent);border-color:var(--accent);color:var(--accent);font-weight:600;}
+.ia-rsvp-toggle-btn.ia-rsvp-sel-no{background:color-mix(in srgb,var(--gold-deep) 9%,transparent);border-color:var(--gold-deep);color:var(--gold-deep);font-weight:600;}
+
+/* Contador de pases a usar (estructura del contrato vigente, piel jennifer) */
+.ia-rsvp-contador-nota{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.6;color:var(--ink-soft);text-align:center;max-width:420px;margin:0 auto 16px;}
+.ia-rsvp-contador{display:flex;align-items:center;justify-content:center;gap:18px;max-width:420px;margin:0 auto 10px;padding:14px 20px;background:color-mix(in srgb,var(--accent-soft) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 28%,transparent);border-radius:14px;}
+.ia-rsvp-contador-btn{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--gold) 45%,transparent);background:rgba(255,255,255,.72);font-family:var(--sans);font-size:24px;font-weight:600;line-height:1;color:var(--gold-deep);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;padding:0;-webkit-tap-highlight-color:transparent;}
+.ia-rsvp-contador-btn:hover:not(:disabled){background:var(--gold-deep);border-color:var(--gold-deep);color:#fff;}
+.ia-rsvp-contador-btn:disabled{opacity:.35;cursor:not-allowed;}
+.ia-rsvp-contador-valor{font-family:var(--display);font-style:italic;font-size:clamp(38px,7vw,52px);color:var(--gold-deep);line-height:1;min-width:64px;text-align:center;}
+.ia-rsvp-contador-pie{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin:0 auto 22px;}
+
+.ia-rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 20px;}
+.ia-rsvp-input{width:100%;padding:15px 20px;border:1.5px solid color-mix(in srgb,var(--gold) 40%,transparent);border-radius:12px;background:rgba(255,255,255,.9);font-family:var(--sans);font-size:16px;font-weight:500;color:var(--ink);letter-spacing:.03em;outline:none;transition:border-color .3s,box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none;min-height:52px;}
+.ia-rsvp-input:focus{border-color:var(--gold-deep);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 15%,transparent);background:#fff;}
+.ia-rsvp-input::placeholder{color:var(--ink-soft);opacity:.75;font-weight:400;}
+.ia-rsvp-input:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px;border-color:var(--gold-deep);}
+.ia-rsvp-input:disabled{opacity:.6;}
+.ia-rsvp-input.ia-rsvp-input-falta{border-color:var(--wine);box-shadow:0 0 0 3px color-mix(in srgb,var(--wine) 16%,transparent);}
+
+.ia-rsvp-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:420px;margin:0 auto;padding:18px 36px;border-radius:50px;border:1.5px solid color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--accent-soft) 30%,var(--paper)) 0%,color-mix(in srgb,var(--accent-soft) 14%,var(--paper)) 100%);font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--ink);cursor:pointer;min-height:56px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;box-shadow:0 6px 20px color-mix(in srgb,var(--accent-soft) 30%,transparent),0 2px 8px color-mix(in srgb,var(--gold) 18%,transparent);}
+.ia-rsvp-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 50%,var(--gold) 100%);opacity:0;transition:opacity .4s;border-radius:50px;}
+.ia-rsvp-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 32px color-mix(in srgb,var(--gold) 30%,transparent);}
+.ia-rsvp-btn:hover:not(:disabled)::after{opacity:1;}
+.ia-rsvp-btn:disabled{cursor:not-allowed;opacity:.55;}
+.ia-rsvp-btn > *{position:relative;z-index:1;}
+
+.ia-rsvp-gracias{max-width:420px;margin:0 auto;padding:26px 22px;background:color-mix(in srgb,var(--accent-soft) 12%,rgba(255,255,255,.6));border:1.5px solid color-mix(in srgb,var(--gold) 32%,transparent);border-radius:16px;text-align:center;}
+.ia-rsvp-gracias-icon{color:var(--accent);margin:0 auto 10px;display:block;}
+.ia-rsvp-gracias-title{font-family:var(--display);font-size:24px;font-weight:700;color:var(--wine);margin:0 0 8px;line-height:1.35;}
+.ia-rsvp-gracias-sub{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-soft);line-height:1.6;margin:0 0 18px;}
+.ia-rsvp-editar-btn{padding:11px 22px;min-height:44px;border:1.5px solid color-mix(in srgb,var(--gold) 45%,transparent);background:transparent;cursor:pointer;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold-deep);border-radius:24px;transition:all .25s;}
+.ia-rsvp-editar-btn:hover:not(:disabled){background:color-mix(in srgb,var(--gold) 12%,transparent);}
+.ia-rsvp-editar-btn:disabled{opacity:.45;cursor:not-allowed;}
+
+.ia-rsvp-feedback{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.55;text-align:center;margin:14px auto 0;max-width:420px;display:none;color:var(--gold-deep);}
+.ia-rsvp-deadline{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--sans);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);padding-left:.4em;font-weight:600;}
+
+@media (max-width:480px){
+  .ia-rsvp-toggle{flex-direction:column;}
+  .ia-rsvp-pases-display{padding:16px 22px;}
+  .ia-rsvp-deadline{font-size:10px;letter-spacing:.22em;padding-left:.22em;}
+  .ia-rsvp-eyebrow{letter-spacing:.4em;padding-left:.4em;}
+  .ia-rsvp-eyebrow::before,.ia-rsvp-eyebrow::after{width:20px;}
+}
 </style>
 </head>
 <body>
@@ -2463,17 +2567,19 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
   <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- RSVP -->
-  <section class="section-bg rsvp" id="rsvp" style="display:none" aria-hidden="true">
-    <div class="container">
-      <div class="rsvp-card">
+  <!-- PAQUETE rsvp -->
+  <!-- RSVP (diseño boda-jennifer, contrato vigente del panel) -->
+  <section class="ia-rsvp" id="ia-rsvp" aria-labelledby="ia-rsvp-title">
+    <div class="ia-rsvp-container">
+      <div class="ia-rsvp-card">
         <!-- Esquinas decorativas -->
-        <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="ia-rsvp-corner ia-rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="ia-rsvp-corner ia-rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="ia-rsvp-corner ia-rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="ia-rsvp-corner ia-rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
 
-        <div class="rsvp-inner">
-          <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
+        <div class="ia-rsvp-inner">
+          <svg class="ia-rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
             <g stroke="var(--gold)" stroke-width=".9" opacity=".8" fill="none">
               <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
               <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
@@ -2486,36 +2592,60 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
             </g>
           </svg>
 
-          <div class="eyebrow">Confirma tu asistencia</div>
-          <h2 class="rsvp-title">Tu presencia <em>lo es</em> todo</h2>
-          <p class="rsvp-text">Nos encantaría contar contigo. Por favor confirma tu asistencia dando un toque al botón.</p>
+          <div class="ia-rsvp-eyebrow">Confirma tu asistencia</div>
+          <h2 class="ia-rsvp-title" id="ia-rsvp-title">Tu presencia <em>significa</em> todo</h2>
+          <p class="ia-rsvp-text">Por favor confírmanos tu asistencia antes del <strong>7 de marzo de 2027</strong>. Nos hará muy felices saber que estarás con nosotros.</p>
 
-          <div class="rsvp-divider">
-            <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+          <p class="ia-rsvp-name" id="ia-rsvp-name" style="display:none"></p>
+
+          <div class="ia-rsvp-divider">
+            <svg class="ia-rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
           </div>
 
-          <p id="rsvp-pases-note" style="display:none;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold-deep);margin:0 auto 18px;line-height:1.5;max-width:420px;"></p>
-          <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
-            <span class="rsvp-pases-label">Pases</span>
-            <span class="rsvp-pases-num" id="rsvp-pases-num">…</span>
+          <div class="ia-rsvp-pases-display" id="ia-rsvp-pases-display">
+            <div class="ia-rsvp-pases-label">Pases asignados</div>
+            <div class="ia-rsvp-pases-num" id="ia-rsvp-pases-num">1</div>
           </div>
 
-          <div class="rsvp-toggle">
-            <button class="rsvp-toggle-btn" id="btnYes" type="button">Asistiré</button>
-            <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+          <!-- Bandeja: formulario de respuesta -->
+          <div class="ia-rsvp-bandeja" id="ia-rsvp-bandeja">
+            <div class="ia-rsvp-toggle" role="group" aria-label="¿Podrás asistir?">
+              <button class="ia-rsvp-toggle-btn" id="ia-rsvp-yes" type="button">Asistiré con gusto</button>
+              <button class="ia-rsvp-toggle-btn" id="ia-rsvp-no" type="button">No podré asistir</button>
+            </div>
+
+            <div class="ia-rsvp-contador-wrap" id="ia-rsvp-contador-wrap" style="display:none">
+              <p class="ia-rsvp-contador-nota" id="ia-rsvp-contador-nota"></p>
+              <div class="ia-rsvp-contador">
+                <button class="ia-rsvp-contador-btn" id="ia-rsvp-menos" type="button" aria-label="Quitar un pase">−</button>
+                <span class="ia-rsvp-contador-valor" id="ia-rsvp-contador-valor" aria-live="polite">1</span>
+                <button class="ia-rsvp-contador-btn" id="ia-rsvp-mas" type="button" aria-label="Agregar un pase">+</button>
+              </div>
+              <p class="ia-rsvp-contador-pie" id="ia-rsvp-contador-pie"></p>
+            </div>
+
+            <div class="ia-rsvp-fields" id="ia-rsvp-fields" style="display:none"></div>
+
+            <button class="ia-rsvp-btn" id="ia-rsvp-confirm-btn" type="button">
+              <span id="ia-rsvp-btn-text">Confirmar</span>
+            </button>
           </div>
 
-          <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+          <!-- Agradecimiento (con opción de cambiar la respuesta) -->
+          <div class="ia-rsvp-gracias" id="ia-rsvp-gracias" style="display:none" aria-live="polite">
+            <svg class="ia-rsvp-gracias-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/>
+            </svg>
+            <p class="ia-rsvp-gracias-title" id="ia-rsvp-gracias-title"></p>
+            <p class="ia-rsvp-gracias-sub" id="ia-rsvp-gracias-sub"></p>
+            <button class="ia-rsvp-editar-btn" id="ia-rsvp-editar-btn" type="button">Cambiar mi respuesta</button>
+          </div>
 
-          <button class="rsvp-btn" id="rsvp-wa-btn" type="button">
-            <span id="rsvp-btn-text">Confirmar Asistencia</span>
-          </button>
+          <p class="ia-rsvp-feedback" id="ia-rsvp-feedback" role="status"></p>
 
-          <p id="rsvp-feedback"></p>
-
-          <div class="rsvp-deadline">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-            Te agradecemos confirmar antes del 7 de marzo de 2027
+          <div class="ia-rsvp-deadline">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            Fecha límite · 7 de marzo de 2027
           </div>
         </div>
       </div>
@@ -2563,168 +2693,7 @@ history.scrollRestoration='manual';
 gsap.registerPlugin(ScrollTrigger);
 const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ------ RSVP · PANEL INTEGRATION (guard silencioso + caché de nombres) ------
-(function(){
-  var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
-  var RSVP_URL  = 'https://boda-iliana-y-arrigo.vercel.app';
-  var DEADLINE  = new Date(2027, 2, 7, 23, 59, 59, 999);
-  var frozen    = false;
-  var params    = new URLSearchParams(window.location.search);
-  var urlPara   = (params.get('para')  || '').trim();
-  var rawP      = parseInt(params.get('pases') || '1', 10);
-  var pasesAsignados = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
-
-  var rsvpChoice = null;
-  var savedNames = [];
-  var noteEl     = document.getElementById('rsvp-pases-note');
-  var dispEl     = document.getElementById('rsvp-pases-display');
-  var numEl      = document.getElementById('rsvp-pases-num');
-  var fieldsEl   = document.getElementById('rsvp-fields');
-  var btnYes     = document.getElementById('btnYes');
-  var btnNo      = document.getElementById('btnNo');
-  var btnConf    = document.getElementById('rsvp-wa-btn');
-  var btnText    = document.getElementById('rsvp-btn-text');
-  var feedEl     = document.getElementById('rsvp-feedback');
-  if(!btnConf || !btnYes) return;
-
-  if (urlPara) {
-    noteEl.textContent = 'Esta invitación es para ' + urlPara;
-    noteEl.style.display = 'block';
-    dispEl.style.display = 'flex';
-    // Guard silencioso: bloqueamos hasta saber pases reales
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
-  } else {
-    numEl.textContent = pasesAsignados;
-  }
-
-  function renderFields(n) {
-    fieldsEl.innerHTML = '';
-    for (var i = 0; i < n; i++) {
-      var inp = document.createElement('input');
-      inp.type = 'text';
-      inp.className = 'rsvp-input';
-      inp.placeholder = n === 1 ? 'Tu nombre completo' : 'Invitado ' + (i + 1);
-      inp.autocomplete = 'off';
-      inp.maxLength = 60;
-      inp.value = savedNames[i] || '';
-      (function(idx){ inp.addEventListener('input', function(){ savedNames[idx] = this.value; }); })(i);
-      fieldsEl.appendChild(inp);
-    }
-  }
-
-  function selectRsvp(choice) {
-    rsvpChoice = choice;
-    if (choice === 'yes') {
-      btnYes.className = 'rsvp-toggle-btn rsvp-toggle-selected-yes';
-      btnNo.className  = 'rsvp-toggle-btn';
-      renderFields(pasesAsignados);
-      fieldsEl.style.display = 'flex';
-    } else {
-      btnYes.className = 'rsvp-toggle-btn';
-      btnNo.className  = 'rsvp-toggle-btn rsvp-toggle-selected-no';
-      fieldsEl.style.display = 'none';
-      fieldsEl.innerHTML = '';
-    }
-  }
-
-  btnYes.addEventListener('click', function(){ selectRsvp('yes'); });
-  btnNo.addEventListener('click',  function(){ selectRsvp('no');  });
-
-  if (urlPara) {
-    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
-      .then(function(r){ return r.json(); })
-      .then(function(resp){
-        var d = resp.invitado;
-        if (d && typeof d.pases === 'number' && d.pases > 0 && d.pases <= 20) {
-          pasesAsignados = d.pases;  // AUTORITATIVO
-        }
-        numEl.textContent = pasesAsignados;
-        btnYes.disabled = false;
-        btnNo.disabled  = false;
-        if (d && (d.estado === 'confirmado' || d.estado === 'declino')) {
-          if (d.nombres_confirmados && d.nombres_confirmados.length) {
-            savedNames = d.nombres_confirmados.slice();
-          }
-          selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
-          btnText.textContent = 'Actualizar respuesta';
-          feedEl.style.display = 'block';
-          feedEl.textContent = d.estado === 'confirmado'
-            ? '¡Ya tienes confirmada tu asistencia! Puedes actualizar tu respuesta.'
-            : 'Ya tienes registrado que no podrás asistir. Puedes cambiar tu respuesta.';
-        }
-      })
-      .catch(function(){
-        numEl.textContent = pasesAsignados;
-        btnYes.disabled = false;
-        btnNo.disabled  = false;
-      });
-  }
-
-  if (frozen) {
-    btnYes.disabled = true;
-    btnNo.disabled  = true;
-    btnConf.disabled = true;
-    btnText.textContent = 'Fecha límite alcanzada';
-    feedEl.style.display = 'block';
-    feedEl.textContent = 'La fecha para confirmar asistencia ha pasado.';
-  }
-
-  btnConf.addEventListener('click', function(){
-    if (frozen) return;
-    if (!rsvpChoice) {
-      feedEl.style.display = 'block';
-      feedEl.style.color = '#9a4a3a';
-      feedEl.textContent = 'Por favor selecciona si asistirás o no.';
-      return;
-    }
-    var nombres = [];
-    if (rsvpChoice === 'yes') {
-      var inputs = fieldsEl.querySelectorAll('.rsvp-input');
-      for (var i = 0; i < inputs.length; i++) {
-        var v = inputs[i].value.trim();
-        if (v) nombres.push(v);
-      }
-      if (nombres.length === 0) {
-        feedEl.style.display = 'block';
-        feedEl.style.color = '#9a4a3a';
-        feedEl.textContent = 'Por favor escribe al menos un nombre.';
-        return;
-      }
-    }
-    btnText.textContent = 'Enviando…';
-    btnConf.disabled = true;
-    feedEl.textContent = ''; feedEl.style.color = '';
-    fetch(PANEL_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nombre: urlPara || 'Invitado',
-        url_boda: RSVP_URL,
-        estado: rsvpChoice === 'yes' ? 'confirmado' : 'declino',
-        pases_confirmados: rsvpChoice === 'yes' ? nombres.length : 0,
-        nombres_confirmados: nombres
-      })
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(){
-      btnText.textContent = 'Actualizar respuesta';
-      btnConf.disabled = false;
-      feedEl.style.display = 'block';
-      feedEl.style.color = 'var(--gold-deep)';
-      feedEl.textContent = rsvpChoice === 'yes'
-        ? '¡Tu asistencia ha sido confirmada! Nos vemos pronto.'
-        : 'Hemos registrado que no podrás asistir. ¡Gracias por avisarnos!';
-    })
-    .catch(function(){
-      btnText.textContent = 'Confirmar Asistencia';
-      btnConf.disabled = false;
-      feedEl.style.display = 'block';
-      feedEl.style.color = '#9a4a3a';
-      feedEl.textContent = 'Error de conexión. Intenta de nuevo.';
-    });
-  });
-})();
+// RSVP viejo de la base retirado: lo reemplaza el paquete ia-rsvp
 
 // ------ SPLIT helpers ------
 function splitToChars(el){
@@ -3972,6 +3941,355 @@ window.addEventListener('resize',()=>ScrollTrigger.refresh());
   document.body.appendChild(g);
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', coser); else coser();
   window.addEventListener('load', coser);
+})();
+</script>
+<script>/* rsvp */
+/* ====== RSVP ia-rsvp: panel de invitados (contrato vigente) + animaciones jennifer ======
+   Lógica = JS vigente de boda-ramiro-y-rosy (token ?i=, legado ?para=&pases=,
+   GET/POST con url_boda, contador de pases a usar, bandeja <-> gracias).
+   Solo cambian ids/clases (prefijo ia-rsvp-), constantes de esta boda y textos
+   sin mención a mensajería. Cargar DESPUÉS del <section id="ia-rsvp">. */
+(function(){
+  'use strict';
+  try {
+  var PANEL_API = 'https://panel-invitados.vercel.app/api/confirmar';
+  var RSVP_URL  = 'https://boda-iliana-y-arrigo.vercel.app';
+  var DEADLINE  = new Date(2027, 2, 7, 23, 59, 59, 999); /* 7 mar 2027 */
+  var frozen    = Date.now() > DEADLINE.getTime();
+  var ERR       = 'var(--wine)';
+
+  /* Token base64url "nombre|pases" en ?i= (atraviesa apps de mensajería intacto).
+     Se conserva ?para=&pases= para links ya enviados. */
+  function decodeInvite(tok){
+    try{
+      var b64 = tok.replace(/-/g,'+').replace(/_/g,'/');
+      while(b64.length % 4) b64 += '=';
+      var bin = atob(b64), bytes = new Uint8Array(bin.length);
+      for(var i=0;i<bin.length;i++){ bytes[i] = bin.charCodeAt(i); }
+      var p = new TextDecoder().decode(bytes).split('|');
+      return { para:(p[0]||'').trim(), pases: parseInt(p[1],10) || 1 };
+    }catch(e){ return null; }
+  }
+  var qp = new URLSearchParams(window.location.search);
+  var hp = new URLSearchParams(window.location.hash.replace(/^#/,''));
+  var urlPara = '', rawP = 1;
+  var token = qp.get('i') || hp.get('i');
+  if(token){
+    var dec = decodeInvite(token);
+    if(dec && dec.para){ urlPara = dec.para; rawP = dec.pases; }
+  }
+  if(!urlPara){
+    urlPara = (qp.get('para') || hp.get('para') || '').trim();
+    rawP    = parseInt(qp.get('pases') || hp.get('pases'), 10);
+  }
+  var pasesAsignados = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
+  var pasesAUsar = 1;
+  var rsvpChoice = null;
+  var savedNames = [];
+
+  function $(id){ return document.getElementById(id); }
+  var nameEl     = $('ia-rsvp-name');
+  var pasesNumEl = $('ia-rsvp-pases-num');
+  var contWrap   = $('ia-rsvp-contador-wrap');
+  var contNota   = $('ia-rsvp-contador-nota');
+  var contValor  = $('ia-rsvp-contador-valor');
+  var contPie    = $('ia-rsvp-contador-pie');
+  var btnMenos   = $('ia-rsvp-menos');
+  var btnMas     = $('ia-rsvp-mas');
+  var fieldsEl   = $('ia-rsvp-fields');
+  var bandejaEl  = $('ia-rsvp-bandeja');
+  var graciasEl  = $('ia-rsvp-gracias');
+  var gTitleEl   = $('ia-rsvp-gracias-title');
+  var gSubEl     = $('ia-rsvp-gracias-sub');
+  var editarBtn  = $('ia-rsvp-editar-btn');
+  var btnYes     = $('ia-rsvp-yes');
+  var btnNo      = $('ia-rsvp-no');
+  var confirmBtn = $('ia-rsvp-confirm-btn');
+  var btnText    = $('ia-rsvp-btn-text');
+  var feedbackEl = $('ia-rsvp-feedback');
+  if(!confirmBtn || !btnYes || !btnNo || !fieldsEl || !bandejaEl || !graciasEl) return;
+
+  function say(msg, color){
+    if(!feedbackEl) return;
+    if(!msg){ feedbackEl.style.display = 'none'; feedbackEl.textContent = ''; return; }
+    feedbackEl.style.display = 'block';
+    feedbackEl.style.color = color || 'var(--gold-deep)';
+    feedbackEl.textContent = msg;
+  }
+
+  function paintHeader(){
+    if(pasesNumEl) pasesNumEl.textContent = pasesAsignados;
+    if(nameEl && urlPara){ nameEl.textContent = urlPara; nameEl.style.display = 'block'; }
+  }
+  paintHeader();
+
+  function renderFields(){
+    fieldsEl.innerHTML = '';
+    for(var i = 0; i < pasesAUsar; i++){
+      var inp = document.createElement('input');
+      inp.type = 'text';
+      inp.className = 'ia-rsvp-input';
+      inp.placeholder = pasesAUsar === 1 ? 'Tu nombre completo' : 'Nombre completo del invitado ' + (i+1);
+      inp.setAttribute('aria-label', inp.placeholder);
+      inp.autocomplete = 'off';
+      inp.maxLength = 60;
+      inp.disabled = frozen;
+      inp.value = savedNames[i] || '';
+      inp.addEventListener('input', function(){ this.classList.remove('ia-rsvp-input-falta'); });
+      (function(idx, el){ el.addEventListener('input', function(){ savedNames[idx] = this.value; }); })(i, inp);
+      fieldsEl.appendChild(inp);
+    }
+  }
+
+  function pintaContador(){
+    if(contValor) contValor.textContent = pasesAUsar;
+    if(btnMenos)  btnMenos.disabled = frozen || pasesAUsar <= 1;
+    if(btnMas)    btnMas.disabled   = frozen || pasesAUsar >= pasesAsignados;
+    if(contNota){
+      contNota.textContent = pasesAsignados === 1
+        ? 'Tienes 1 pase reservado para ti.'
+        : 'Tienes ' + pasesAsignados + ' pases reservados. Aumenta o disminuye el número de pases que vayas a ocupar.';
+    }
+    if(contPie){
+      contPie.textContent = pasesAUsar >= pasesAsignados
+        ? 'Estás usando todos tus pases'
+        : pasesAUsar + ' de ' + pasesAsignados + ' pases';
+    }
+  }
+
+  function setPases(n){
+    var nuevo = Math.min(pasesAsignados, Math.max(1, n));
+    if(nuevo === pasesAUsar) return;
+    pasesAUsar = nuevo;
+    pintaContador();
+    renderFields();
+    say('');
+  }
+  if(btnMenos) btnMenos.addEventListener('click', function(){ if(!frozen) setPases(pasesAUsar - 1); });
+  if(btnMas)   btnMas.addEventListener('click',   function(){ if(!frozen) setPases(pasesAUsar + 1); });
+
+  function selectRsvp(choice){
+    rsvpChoice = choice;
+    btnYes.classList.toggle('ia-rsvp-sel-yes', choice === 'yes'); btnYes.classList.remove('ia-rsvp-sel-no');
+    btnNo.classList.toggle('ia-rsvp-sel-no',  choice === 'no');  btnNo.classList.remove('ia-rsvp-sel-yes');
+    btnYes.setAttribute('aria-pressed', choice === 'yes' ? 'true' : 'false');
+    btnNo.setAttribute('aria-pressed',  choice === 'no'  ? 'true' : 'false');
+    if(choice === 'yes'){
+      if(contWrap) contWrap.style.display = '';
+      pintaContador();
+      renderFields();
+      fieldsEl.style.display = '';
+    } else {
+      if(contWrap) contWrap.style.display = 'none';
+      fieldsEl.style.display = 'none';
+      fieldsEl.innerHTML = '';
+    }
+  }
+  btnYes.addEventListener('click', function(){ if(!frozen){ selectRsvp('yes'); say(''); } });
+  btnNo.addEventListener('click',  function(){ if(!frozen){ selectRsvp('no');  say(''); } });
+
+  function mostrarGracias(estado, nombres){
+    var lista = (nombres || []).filter(function(n){ return n && String(n).trim(); });
+    if(estado === 'confirmado'){
+      gTitleEl.textContent = '¡Gracias por confirmar!';
+      gSubEl.textContent = lista.length <= 1
+        ? 'Te esperamos' + (lista[0] ? ', ' + lista[0] : '') + '.'
+        : 'Confirmamos ' + lista.length + ' lugares: ' + lista.join(', ') + '.';
+    } else {
+      gTitleEl.textContent = 'Gracias por avisarnos';
+      gSubEl.textContent = 'Lamentamos que no puedas acompañarnos. Te vamos a extrañar.';
+    }
+    bandejaEl.style.display = 'none';
+    graciasEl.style.display = '';
+    if(editarBtn) editarBtn.disabled = frozen;
+    say('');
+  }
+  function abrirBandeja(){
+    graciasEl.style.display = 'none';
+    bandejaEl.style.display = '';
+    say('');
+  }
+  if(editarBtn) editarBtn.addEventListener('click', function(){ if(!frozen) abrirBandeja(); });
+
+  function applyFreeze(){
+    if(!frozen) return;
+    btnYes.disabled = true;
+    btnNo.disabled  = true;
+    confirmBtn.disabled = true;
+    if(btnMenos) btnMenos.disabled = true;
+    if(btnMas)   btnMas.disabled   = true;
+    if(editarBtn) editarBtn.disabled = true;
+    var ins = fieldsEl.querySelectorAll('.ia-rsvp-input');
+    for(var i=0;i<ins.length;i++){ ins[i].disabled = true; }
+    if(btnText) btnText.textContent = 'Fecha límite alcanzada';
+    say('La fecha para confirmar asistencia ha pasado.');
+  }
+
+  if(urlPara){
+    btnYes.disabled = true;
+    btnNo.disabled  = true;
+    fetch(PANEL_API + '?nombre=' + encodeURIComponent(urlPara) + '&url_boda=' + encodeURIComponent(RSVP_URL))
+      .then(function(r){ return r.json(); })
+      .then(function(resp){
+        var d = resp && resp.invitado;
+        if(d && typeof d.pases === 'number' && d.pases > 0 && d.pases <= 20){
+          pasesAsignados = d.pases;
+          if(pasesAUsar > pasesAsignados) pasesAUsar = pasesAsignados;
+        }
+        paintHeader();
+        if(!frozen){ btnYes.disabled = false; btnNo.disabled = false; }
+        if(d && (d.estado === 'confirmado' || d.estado === 'declino')){
+          if(d.nombres_confirmados && d.nombres_confirmados.length){
+            savedNames = d.nombres_confirmados.slice();
+            pasesAUsar = Math.min(pasesAsignados, Math.max(1, savedNames.length));
+          }
+          selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
+          if(btnText) btnText.textContent = 'Actualizar respuesta';
+          mostrarGracias(d.estado, d.nombres_confirmados || []);
+        }
+        applyFreeze();
+      })
+      .catch(function(){
+        paintHeader();
+        if(!frozen){ btnYes.disabled = false; btnNo.disabled = false; }
+        applyFreeze();
+      });
+  } else {
+    confirmBtn.disabled = true;
+    say('Para confirmar necesitas abrir el enlace personalizado que te enviamos. Ese enlace lleva tu nombre y tus pases; si lo abres desde un reenvío o escribiendo la dirección a mano, no podemos identificar tu invitación.');
+    applyFreeze();
+  }
+
+  confirmBtn.addEventListener('click', function(){
+    if(frozen || confirmBtn.disabled) return;
+    if(!urlPara){
+      say('Para confirmar necesitas abrir el enlace personalizado que te enviamos.', ERR);
+      return;
+    }
+    if(!rsvpChoice){
+      say('Por favor indícanos si podrás asistir.', ERR);
+      return;
+    }
+    var nombres = [];
+    if(rsvpChoice === 'yes'){
+      var inputs = fieldsEl.querySelectorAll('.ia-rsvp-input');
+      for(var i=0;i<inputs.length;i++){
+        var v = inputs[i].value.trim();
+        if(v) nombres.push(v);
+      }
+      if(nombres.length === 0){
+        say('Por favor escribe al menos un nombre.', ERR);
+        if(inputs[0]) inputs[0].focus();
+        return;
+      }
+      if(nombres.length < pasesAUsar){
+        var faltan = pasesAUsar - nombres.length;
+        var primero = null;
+        for(var k=0;k<inputs.length;k++){
+          var vacio = !inputs[k].value.trim();
+          inputs[k].classList.toggle('ia-rsvp-input-falta', vacio);
+          if(vacio && !primero) primero = inputs[k];
+        }
+        say('Elegiste ' + pasesAUsar + ' pases pero escribiste ' + nombres.length + ' nombre' + (nombres.length === 1 ? '' : 's') + '. Escribe ' + (faltan === 1 ? 'el nombre que falta' : 'los ' + faltan + ' nombres que faltan') + ' o baja el contador a los pases que vas a utilizar.', ERR);
+        if(feedbackEl && feedbackEl.scrollIntoView) feedbackEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        if(primero) primero.focus({ preventScroll: true });
+        return;
+      }
+    }
+    var estadoFinal = rsvpChoice === 'yes' ? 'confirmado' : 'declino';
+
+    confirmBtn.disabled = true;
+    if(btnText) btnText.textContent = 'Enviando…';
+    say('');
+
+    fetch(PANEL_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nombre:              urlPara,
+        url_boda:            RSVP_URL,
+        estado:              estadoFinal,
+        pases_confirmados:   estadoFinal === 'confirmado' ? nombres.length : 0,
+        nombres_confirmados: estadoFinal === 'confirmado' ? nombres : []
+      })
+    })
+    .then(function(r){
+      return r.json()
+        .then(function(d){ return { ok: r.ok, d: d }; })
+        .catch(function(){ return { ok: r.ok, d: null }; });
+    })
+    .then(function(res){
+      confirmBtn.disabled = false;
+      if(res.ok && res.d && res.d.ok){
+        if(btnText) btnText.textContent = 'Actualizar respuesta';
+        mostrarGracias(estadoFinal, nombres);
+        return;
+      }
+      if(btnText) btnText.textContent = 'Confirmar';
+      var err = res.d && res.d.error;
+      say(
+        err === 'no_match'
+          ? 'No pudimos identificar tu invitación. Abre el enlace personalizado que te enviamos; ese es el único que registra tu confirmación.'
+          : err === 'invitacion_borrada'
+            ? 'Esta invitación ya no está activa. Por favor contacta a los novios para que te envíen un enlace nuevo.'
+            : 'Hubo un problema al enviar. Inténtalo de nuevo.',
+        ERR);
+    })
+    .catch(function(){
+      confirmBtn.disabled = false;
+      if(btnText) btnText.textContent = 'Confirmar';
+      say('Sin conexión. Verifica tu internet e inténtalo de nuevo.', ERR);
+    });
+  });
+  } catch(e){ if(window.console) console.warn('[ia-rsvp] RSVP', e); }
+})();
+
+(function(){
+  'use strict';
+  /* ---------- Animaciones (las de boda-jennifer). Opcionales: sin GSAP o con
+     reduced-motion la sección queda estática y visible. ---------- */
+  try {
+    var gsap = window.gsap, ST = window.ScrollTrigger;
+    var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var sec = document.getElementById('ia-rsvp');
+    if(!sec || !gsap || !ST || reduced) return;
+    gsap.registerPlugin(ST);
+    var q = function(s){ return sec.querySelectorAll(s); };
+    var card = sec.querySelector('.ia-rsvp-card');
+    var btn  = sec.querySelector('.ia-rsvp-btn');
+    var dl   = sec.querySelector('.ia-rsvp-deadline');
+    var anims = [];
+
+    if(btn && !('ontouchstart' in window)){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        gsap.to(btn, { x:(e.clientX - r.left - r.width/2)*.22, y:(e.clientY - r.top - r.height/2)*.35, duration:.4, ease:'power2.out' });
+      });
+      btn.addEventListener('mouseleave', function(){ gsap.to(btn, { x:0, y:0, duration:.6, ease:'elastic.out(1,.5)' }); });
+    }
+    anims.push(gsap.fromTo(card, {opacity:0,y:40,scale:.97}, {opacity:1,y:0,scale:1,duration:1.2,ease:'power4.out',scrollTrigger:{trigger:card,start:'top 82%',once:true}}));
+    anims.push(gsap.fromTo(q('.ia-rsvp-ornament'), {opacity:0,scaleX:0}, {opacity:1,scaleX:1,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 82%',once:true}}));
+    anims.push(gsap.fromTo(q('.ia-rsvp-eyebrow,.ia-rsvp-title,.ia-rsvp-text,.ia-rsvp-divider'), {opacity:0,y:16}, {opacity:1,y:0,duration:1.1,stagger:.1,scrollTrigger:{trigger:card,start:'top 80%',once:true}}));
+    if(btn) anims.push(gsap.fromTo(btn, {opacity:0,y:24,scale:.92}, {opacity:1,y:0,scale:1,duration:1.2,ease:'back.out(1.4)',scrollTrigger:{trigger:card,start:'top 70%',once:true}}));
+    if(dl){
+      /* Se anima hacia el letter-spacing que diga el CSS (no a un valor fijo) */
+      var ls = getComputedStyle(dl).letterSpacing;
+      anims.push(gsap.fromTo(dl, {opacity:0,letterSpacing:'1em'}, {opacity:1,letterSpacing:ls,duration:1,clearProps:'letterSpacing',scrollTrigger:{trigger:card,start:'top 60%',once:true}}));
+    }
+    /* Esquinas: el espejo vive en `transform` (CSS) y el zoom en la variable
+       --ia-rsvp-cs (propiedad `scale`). Si GSAP tocara `transform` borraría
+       los scaleX/scaleY(-1) y las 4 esquinas apuntarían igual. */
+    anims.push(gsap.fromTo(q('.ia-rsvp-corner'), {opacity:0,'--ia-rsvp-cs':.5}, {opacity:1,'--ia-rsvp-cs':1,duration:1,stagger:.08,ease:'back.out(2)',scrollTrigger:{trigger:card,start:'top 82%',once:true}}));
+
+    /* Red de seguridad: si un ScrollTrigger no dispara (tarjeta alta, layout
+       que cambia por otras secciones), al pasar la sección todo se completa. */
+    function completar(){ for(var i=0;i<anims.length;i++){ try{ anims[i].progress(1); }catch(e){} } }
+    ST.create({ trigger: sec, start: 'bottom bottom', once: true, onEnter: completar });
+    window.addEventListener('load', function(){ try{ ST.refresh(); }catch(e){} });
+    if(location.hash === '#ia-rsvp') completar();
+  } catch(e){
+    try{ var s = document.querySelectorAll('#ia-rsvp .ia-rsvp-card, #ia-rsvp .ia-rsvp-card *'); for(var j=0;j<s.length;j++){ s[j].style.opacity=''; } }catch(_){}
+  }
 })();
 </script>
 </body>
