@@ -1256,7 +1256,7 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
 /* ── Figuras (dibujos caballero / dama) ── */
 .ia-dc-figures {
   display: flex;
-  align-items: center;
+  align-items: flex-start;   /* los dibujos a la misma altura aunque las leyendas ocupen distintas lineas */
   justify-content: center;
   gap: 30px;
   margin: 6px auto 28px;
@@ -1272,6 +1272,7 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
 .ia-dc-fig img {
   height: 220px;
   width: auto;
+  aspect-ratio: 300 / 620;
   max-width: 100%;
   object-fit: contain;
   display: block;
@@ -1933,6 +1934,11 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
   .ia-rsvp-eyebrow{letter-spacing:.4em;padding-left:.4em;}
   .ia-rsvp-eyebrow::before,.ia-rsvp-eyebrow::after{width:20px;}
 }
+
+/* QR en espera: borroso hasta el dia del evento */
+.album-qr--espera{overflow:hidden;position:relative}
+.album-qr--espera img{filter:blur(7px);transform:scale(1.06);opacity:.85;user-select:none;-webkit-user-select:none;pointer-events:none}
+.album-qr-nota{margin-top:20px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;line-height:1.5;color:var(--ink-soft);text-align:center}
 </style>
 </head>
 <body>
@@ -2420,7 +2426,7 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
 
       <div class="ia-dc-figures ia-dc-fu">
         <div class="ia-dc-fig">
-          <img src="ia-dc-caballero.png" alt="Caballero con traje formal" loading="lazy" decoding="async" width="300" height="610" />
+          <img src="ia-dc-caballero.png" alt="Caballero con traje formal" decoding="async" width="300" height="620" />
           <span class="ia-dc-fig-label">Caballeros</span>
           <span class="ia-dc-fig-sub">traje formal</span>
         </div>
@@ -2428,7 +2434,7 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
         <div class="ia-dc-sep-line" aria-hidden="true"></div>
 
         <div class="ia-dc-fig">
-          <img src="ia-dc-dama.png" alt="Dama con vestido largo elegante" loading="lazy" decoding="async" width="248" height="604" />
+          <img src="ia-dc-dama.png" alt="Dama con vestido largo elegante" decoding="async" width="300" height="620" />
           <span class="ia-dc-fig-label">Damas</span>
           <span class="ia-dc-fig-sub">vestido largo o midi elegante</span>
         </div>
@@ -2558,8 +2564,8 @@ html.nm-js .familia-names.nm-multi.nm-on .nm{opacity:1;transform:none;filter:non
       <h2>Nuestro <em>álbum</em></h2>
       <div class="album-wrap">
         <p class="album-text">Después de la boda, sube tus fotos y videos a nuestro álbum compartido. Será nuestro recuerdo colectivo de esta noche tan especial.</p>
-        <div class="album-qr"><img src="album-qr.png" alt="Código QR del álbum compartido"></div>
-        <a class="album-btn" aria-disabled="true" href="#">Enlace por confirmar</a>
+        <div class="album-qr album-qr--espera" aria-hidden="true"><img src="album-qr.png" alt=""></div>
+        <p class="album-qr-nota">Estará disponible el día del evento</p>
       </div>
     </div>
   </section>
